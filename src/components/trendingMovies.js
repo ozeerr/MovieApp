@@ -1,12 +1,12 @@
-import { Dimensions, Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
+import {  Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import React from 'react'
 import Carousel from 'react-native-snap-carousel'
 import { useNavigation } from '@react-navigation/native'
-const {width,height}=Dimensions.get('window')
+import { height, width } from '../utils/constants'
 
 const MovieCard = ({item,handleClick}) => {
     return(
-        <TouchableWithoutFeedback onPress={handleClick}>
+        <TouchableWithoutFeedback onPress={()=>handleClick(item)}>
             <Image source={require("../../assets/moviePoster1.jpg")}
             style={{
                 width:width*0.6,
@@ -20,7 +20,7 @@ const MovieCard = ({item,handleClick}) => {
 
 const TrendingMovies = ({data}) => {
     const navigation=useNavigation();
-    const handleClick=()=>{
+    const handleClick=(item)=>{
         navigation.navigate("Movie",item)
     }
   return (
