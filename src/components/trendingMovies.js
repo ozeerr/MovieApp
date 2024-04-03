@@ -7,7 +7,7 @@ import { height, width } from '../utils/constants'
 const MovieCard = ({item,handleClick}) => {
     return(
         <TouchableWithoutFeedback onPress={()=>handleClick(item)}>
-            <Image source={require("../../assets/moviePoster1.jpg")}
+            <Image source={{uri:"https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_FMjpg_UX1000_.jpg"}}
             style={{
                 width:width*0.6,
                 height:height*0.4,
