@@ -15,8 +15,9 @@ import {styles, theme} from '../theme';
 import {height, width} from '../utils/constants';
 import LinearGradient from 'react-native-linear-gradient';
 import Cast from '../components/cast';
-import MovieList from '../components/movieList';
 import Loading from '../components/loading';
+import { fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies, image500 } from '../../api/moviedb';
+import MovieList from '../components/movieList';
 const ios = Platform.OS === 'ios';
 const topMargin = ios ? '' : 'mt-3';
 const MovieScreen = () => {
@@ -24,11 +25,31 @@ const MovieScreen = () => {
   const navigation = useNavigation();
   const {params: item} = useRoute();
   const [isFavourite, setIsFavourite] = useState(false);
-  const [cast, setCast] = useState([1,2,3,4,5])
-  const [similarMovies, setSimilarMovies] = useState([1,2,3,4,5])
+  const [cast, setCast] = useState([])
+  const [similarMovies, setSimilarMovies] = useState([])
   const [loading,setLoading]=useState(false)
+  const [movie,setMovie]=useState({})
 
-  useEffect(() => {}, [item]);
+  useEffect(() => {
+    setLoading(true)
+    getMovieDetails(item.id);
+    getMovieCredits(item.id);
+    getSimilarMovies(item.id)
+  }, [item]);
+  const getMovieDetails=async(id)=>{
+    const data=await fetchMovieDetails(id);
+    if(data) setMovie(data);
+    setLoading(false)
+  }
+
+  const getMovieCredits=async(id)=>{
+    const data=await fetchMovieCredits(id);
+    if(data&&data.cast) setCast(data.cast);
+  }
+  const getSimilarMovies=async(id)=>{
+    const data=await fetchSimilarMovies(id);
+    if(data&&data.results) setSimilarMovies(data.results);
+  }
   return (
     <ScrollView
       contentContainerStyle={{paddingBottom: 20}}
@@ -62,7 +83,7 @@ const MovieScreen = () => {
                 <View>
                 <Image
                   source={{
-                    uri: 'https://m.media-amazon.com/images/M/MV5BODZhNzlmOGItMWUyYS00Y2Q5LWFlNzMtM2I2NDFkM2ZkYmE1XkEyXkFqcGdeQXVyMTU5OTA4NTIz._V1_FMjpg_UX1000_.jpg',
+                    uri: image500(movie?.poster_path),
                   }}
                   style={{width: width, height: height * 0.55}}
                 />
@@ -79,18 +100,23 @@ const MovieScreen = () => {
       
       </View>
       <View style={{marginTop:-height*0.09}} className='spaca-y-3'>
-        <Text className='text-white text-center text-3xl font-bold tracking-wider'>{movieName}</Text>
-        <Text className='text-neutral-400 font-semibold text-base text-center'>Released - 2020 - 170min</Text>
+        <Text className='text-white text-center text-3xl font-bold tracking-wider'>{movie.title}</Text>
+        <Text className='text-neutral-400 font-semibold text-base text-center'>{movie?.status} - {movie?.release_date?.split("-")[0]} - {movie?.runtime}</Text>
         <View className='flex-row justify-center mx-4 space-x-2'>
-            <Text className='text-neutral-400 font-semibold text-base text-center'>Action -</Text>
-            <Text className='text-neutral-400 font-semibold text-base text-center'>Thrill -</Text>
-            <Text className='text-neutral-400 font-semibold text-base text-center'>Comedy</Text>
+            {
+                movie?.genres?.map((genre,index)=>{
+                    let last=index!==movie?.genres?.length-1;
+                    return(
+                        <Text key={index} className='text-neutral-400 font-semibold text-base text-center'>{genre?.name} {!last?"":"-"}</Text>
+                        )
+                })
+            }
         </View> 
-        <Text className='text-neutral-400 mx-4 mt-2 tracking-wide'>Scott Lang and Hope Van Dyne are dragged into the Quantum Realm, along with Hope's parents and Scott's daughter Cassie. Together they must find a way to escape, but what secrets is Hope's mother hiding? And who is the mysterious Kang?</Text>
+        <Text className='text-neutral-400 mx-4 mt-2 tracking-wide'>{movie?.overview}</Text>
       </View>
-            <Cast cast={cast} navigation={navigation}/>
+            {cast.length>0&& <Cast cast={cast} navigation={navigation}/>}
 
-            <MovieList title="Similar Movies" hideSeeAll={true } data={similarMovies}/>
+            {similarMovies.length>0&&<MovieList title="Similar Movies" hideSeeAll={true } data={similarMovies}/>}
     </ScrollView>
   );
 };

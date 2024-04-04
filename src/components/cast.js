@@ -1,10 +1,10 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
+import { image185 } from '../../api/moviedb'
 
 const Cast = ({cast,navigation}) => {
-    let personName="Keanu Reevs"
-    let characterName="John Wick"
+   
   return (
     <View className='my-6'>
       <Text className='text-white text-lg mx-4 mb-5'>Top Cast</Text>
@@ -18,16 +18,16 @@ const Cast = ({cast,navigation}) => {
                 return(
                     <TouchableOpacity onPress={()=>navigation.navigate("Person",person)} key={index} className='mr-4 items-center'>
                         <View className='overflow-hidden rounded-full h-20 w-20 items-center border-neutral-500 border '>
-                        <Image className='rounded-2xl h-24 w-20' source={{uri:"https://m.media-amazon.com/images/M/MV5BNGJmMWEzOGQtMWZkNS00MGNiLTk5NGEtYzg1YzAyZTgzZTZmXkEyXkFqcGdeQXVyMTE1MTYxNDAw._V1_.jpg"}}/>
+                        <Image className='rounded-2xl h-24 w-20' source={{uri:image185(person?.profile_path)}}/>
                         </View>
                       <Text className='text-white text-xs mt-1'>
                         {
-                            characterName.length>10?characterName.slice(0,10)+"...":characterName
+                            person?.character?.length>10?person?.character?.slice(0,12)+"...":person?.character
                         }
                         </Text>         
                         <Text className='text-white text-xs mt-1'>
                         {
-                            personName.length>10?personName.slice(0,10)+"...":personName
+                            person?.name?.length>10?person?.name?.slice(0,10)+"...":person?.name
                         }
                         </Text>        
                     </TouchableOpacity>

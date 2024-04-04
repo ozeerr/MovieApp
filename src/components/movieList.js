@@ -3,6 +3,7 @@ import React from 'react'
 import { ScrollView, TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { styles } from '../theme'
 import { useNavigation } from '@react-navigation/native'
+import { image185 } from '../../api/moviedb'
 const {width,height}=Dimensions.get("window")
 const MovieList = ({title,data,hideSeeAll}) => {
     let movieName="Ant-Man and the Wasap: Quantumania"
@@ -23,10 +24,10 @@ const MovieList = ({title,data,hideSeeAll}) => {
             return(
                 <TouchableWithoutFeedback key={index} onPress={()=>navigation.push("Movie",item)}>
                     <View className='space-y-1 mr-4'>
-                        <Image source={{uri:"https://tr.web.img3.acsta.net/pictures/23/01/25/11/45/2784455.jpg"}}
+                        <Image source={{uri:image185(item.poster_path)}}
                         className='rounded-3xl'
                         style={{width:width*0.33,height:height*0.2}}/>
-                        <Text className='text-neutral-300 ml-1'>{movieName.length>14 ? movieName.slice(0,14)+"...":movieName}</Text>
+                        <Text className='text-neutral-300 ml-1'>{item?.title?.length>14 ? item?.title?.slice(0,14)+"...":item?.title}</Text>
                     </View>
                 </TouchableWithoutFeedback>
             )

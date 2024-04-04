@@ -3,11 +3,12 @@ import React from 'react'
 import Carousel from 'react-native-snap-carousel'
 import { useNavigation } from '@react-navigation/native'
 import { height, width } from '../utils/constants'
+import { image500 } from '../../api/moviedb'
 
 const MovieCard = ({item,handleClick}) => {
     return(
         <TouchableWithoutFeedback onPress={()=>handleClick(item)}>
-            <Image source={{uri:"https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_FMjpg_UX1000_.jpg"}}
+            <Image source={{uri:image500(item.poster_path)}}
             style={{
                 width:width*0.6,
                 height:height*0.4,
