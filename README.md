@@ -1,79 +1,63 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<h1 align="center">
+     MovieApp
+</h1>
 
-# Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Start the Metro Server
+"MovieApp" Application where you can review current Movies, their casts and topics
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Using Technologies:
+- React Native
+- React Native Navigation
+- React Native Snap Carousel
+- Axios
 
-To start Metro, run the following command from the _root_ of your React Native project:
 
-```bash
-# using npm
-npm start
+## 3rd Party Libraries
 
-# OR using Yarn
-yarn start
-```
+This app is built with the help of the following 3rd party libraries:
 
-## Step 2: Start your Application
+- Nativewind
+- HeroIcons
+- Lodash
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
-### For Android
 
-```bash
-# using npm
-npm run android
 
-# OR using Yarn
-yarn android
-```
 
-### For iOS
 
-```bash
-# using npm
-npm run ios
 
-# OR using Yarn
-yarn ios
-```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
 
-Now that you have successfully run the app, let's modify it.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Learn More
 
-To learn more about React Native, take a look at the following resources:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+## Screenshots
+
+| Home | FilmDetails | Cast | Search |
+| --- | --- | --- | --- |
+| <img src="https://github.com/ozeerr/MovieApp/assets/137641188/eabe5254-463e-472e-bb4c-1c9b37cdd1fd" alt="OnBoarding" width="100%"/> | <img src="https://github.com/ozeerr/MovieApp/assets/137641188/83dedda3-a3ed-4c13-b649-bb405a80ae30" alt="LoginAndRegister" width="100%" /> | <img src="https://github.com/ozeerr/MovieApp/assets/137641188/fa950a99-786a-47e1-91cc-9d225c43a35d" alt="LoginAndRegister" width="100%"/> | <img src="https://github.com/ozeerr/MovieApp/assets/137641188/4fc1c27a-e000-4c8f-a47c-2b42ffbad43c" alt="HomePage" width="100%"/> |
+
+
+
+## Video Preview 🎥                                                                      
+<div align="center">
+  <video src="https://github.com/ozeerr/MovieApp/assets/137641188/718eafdb-47e7-45af-824c-e9070f60781e" width="50%"/>
+</div>
+
+## Contact Me
+
+If you have any questions, encounter issues, or want to provide feedback, please feel free to reach out to me via email at<br>
+[efe.aeo@gmail.com](mailto:efe.aeo@gmail.com)<br>
